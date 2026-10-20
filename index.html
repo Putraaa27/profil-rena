@@ -17,13 +17,11 @@
 
 <body class="journal-theme">
 
-    <!-- ================= BACKGROUND AUDIO (The 1975 - About You) ================= -->
-    <!-- Menggunakan Audio HTML5 agar bisa mengalir terus antar halaman -->
-    <audio id="bg-audio" loop>
-        <!-- Link audio instrumental/lofi "About You" atau audio publik -->
-        <source src="https://cdns.jurispons.com/uploads/music/The%201975%20-%20About%20You%20(Instrumental).mp3" type="audio/mpeg">
-        Browser kamu tidak mendukung elemen audio.
-    </audio>
+    <!-- ================= AUDIO YOUTUBE (The 1975 - About You) ================= -->
+    <!-- Disembunyikan agar lagunya mengalir terus tanpa gangguan visual -->
+    <div id="youtube-audio-container" style="display:none;">
+        <iframe id="yt-player" width="1" height="1" src="https://www.youtube.com/embed/Q43Yq4dlshk?enablejsapi=1&autoplay=1&loop=1&playlist=Q43Yq4dlshk" frameborder="0" allow="autoplay"></iframe>
+    </div>
 
     <!-- ================= KONTROL MUSIK & NAVIGASI ATAS ================= -->
     <div id="top-controls" class="fixed-top p-3 d-flex justify-content-between align-items-center px-4 d-none">
@@ -65,7 +63,7 @@
             <div class="col-lg-8">
                 
                 <!-- BUKU / WADAH UTAMA HALAMAN -->
-                <div class="book-container shadow-lg rounded-4 bg-white position-relative overflow-hidden">
+                <div class="book-container shadow-lg rounded-4 bg-white position-relative">
                     
                     <!-- KONTEN HALAMAN 1: DATA DIRI & ABOUT -->
                     <div class="book-page active-page" id="page-1">
@@ -80,7 +78,7 @@
                                         <span>🌸</span>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8 text-dark">
                                     <p class="mb-2"><b>Nama:</b> Rena Ismi</p>
                                     <p class="mb-2"><b>NIM:</b> 184250026</p>
                                     <p class="mb-2"><b>Program Studi:</b> Sains Data</p>
@@ -131,7 +129,7 @@
 
                             <h5 class="text-pink-dark fw-bold mb-3"><i class="bi bi-calendar-check-fill me-2"></i>Jadwal Kegiatan</h5>
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover text-center align-middle small mb-0">
+                                <table class="table table-bordered table-hover text-center align-middle small mb-0 text-dark">
                                     <thead class="table-pink text-pink-dark">
                                         <tr><th>No</th><th>Kegiatan</th><th>Jadwal</th></tr>
                                     </thead>
@@ -164,7 +162,7 @@
                         <div class="page-body px-2">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink">
+                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink text-dark">
                                         <h6 class="fw-bold text-pink-dark mb-2">🎧 Favorite Songs</h6>
                                         <ul class="small ps-3 mb-0 text-secondary">
                                             <li>Playlist Gym</li>
@@ -174,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink">
+                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink text-dark">
                                         <h6 class="fw-bold text-pink-dark mb-2">🌺 Favorite Flowers</h6>
                                         <ul class="small ps-3 mb-0 text-secondary">
                                             <li>Lily, Lotus, Rose, Sunflower</li>
@@ -182,7 +180,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <div class="p-3 bg-pink-soft rounded-3 border border-pink">
+                                    <div class="p-3 bg-pink-soft rounded-3 border border-pink text-dark">
                                         <h6 class="fw-bold text-pink-dark mb-2">✈️ My Travel List</h6>
                                         <ol class="small ps-3 mb-0 text-secondary">
                                             <li>USA - 50 States</li>
@@ -212,7 +210,7 @@
                         </div>
                         <div class="page-body px-2">
                             <!-- Form Appointment -->
-                            <form id="appointment-form" class="mb-4">
+                            <form id="appointment-form" class="mb-4 text-dark">
                                 <div class="mb-2">
                                     <label class="form-label small fw-bold text-pink-dark">Nama Kamu:</label>
                                     <input type="text" class="form-control form-control-sm border-pink" id="nama" placeholder="Masukkan nama" required>
@@ -277,10 +275,28 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- SCRIPT INTERAKTIF & MUSIK -->
+    <!-- SCRIPT INTERAKTIF & YOUTUBE API -->
     <script>
+        // Load YouTube Iframe API secara dinamis
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Player siap
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
-            const audio = document.getElementById('bg-audio');
             const audioToggleBtn = document.getElementById('audio-toggle-btn');
             const audioIcon = document.getElementById('audio-icon');
             const topControls = document.getElementById('top-controls');
@@ -290,7 +306,7 @@
             const loadingBar = document.getElementById('intro-loading-bar');
             const loadingText = document.getElementById('loading-text');
 
-            let isMusicPlaying = true; // Musik aktif secara default
+            let isMusicPlaying = true;
 
             // 1. Animasi Bunga Jatuh di Intro
             const flowerContainer = document.getElementById('flower-container');
@@ -305,7 +321,7 @@
                 flowerContainer.appendChild(f);
             }
 
-            // 2. Simulasi Loading Intro (Terkunci sampai selesai)
+            // 2. Simulasi Loading Intro
             let progress = 0;
             let loadInterval = setInterval(() => {
                 progress += 2;
@@ -314,20 +330,18 @@
                     clearInterval(loadInterval);
                     loadingText.innerText = "Buku Journal siap dibuka! ♡";
                     loadingBar.classList.add('bg-success');
-                    btnMasuk.classList.remove('d-none'); // Munculkan tombol next
+                    btnMasuk.classList.remove('d-none');
                 }
             }, 50);
 
-            // 3. Tombol Masuk Ditekan (Memulai Musik & Masuk ke Buku)
+            // 3. Tombol Masuk Ditekan
             btnMasuk.addEventListener('click', function() {
-                // Coba putar audio (mengatasi kebijakan autoplay browser)
-                if (isMusicPlaying) {
-                    audio.play().catch(e => console.log("Autoplay dicegah browser:", e));
+                if (isMusicPlaying && player && typeof player.playVideo === 'function') {
+                    player.playVideo();
                 }
                 
-                topControls.classList.remove('d-none'); // Munculkan kontrol musik di pojok kanan atas
+                topControls.classList.remove('d-none');
                 
-                // Transisi fade-out intro screen
                 introScreen.style.opacity = '0';
                 setTimeout(() => {
                     introScreen.style.display = 'none';
@@ -335,22 +349,26 @@
                 }, 500);
             });
 
-            // 4. Kontrol Tombol Mute / Unmute Musik (Persisten antar halaman)
+            // 4. Tombol Mute / Unmute Musik
             audioToggleBtn.addEventListener('click', function() {
                 if (isMusicPlaying) {
-                    audio.pause();
+                    if (player && typeof player.pauseVideo === 'function') {
+                        player.pauseVideo();
+                    }
                     isMusicPlaying = false;
                     audioIcon.className = "bi bi-volume-mute-fill text-muted fs-5";
                     audioToggleBtn.title = "Musik Dimatikan";
                 } else {
-                    audio.play();
+                    if (player && typeof player.playVideo === 'function') {
+                        player.playVideo();
+                    }
                     isMusicPlaying = true;
                     audioIcon.className = "bi bi-volume-up-fill fs-5 text-pink-dark";
                     audioToggleBtn.title = "Musik Dihidupkan";
                 }
             });
 
-            // 5. Efek Membalik Halaman Buku (Page Flip Animation)
+            // 5. Efek Membalik Halaman Buku
             const pages = document.querySelectorAll('.book-page');
             
             document.querySelectorAll('.btn-next').forEach(btn => {
@@ -375,15 +393,17 @@
                 let targetPage = document.getElementById('page-' + pageNum);
                 targetPage.classList.add('active-page');
                 
-                // Beri efek animasi geser/balik kertas
                 if(direction === 'next') {
-                    targetPage.classList.add('page-slide-right');
+                    targetPlayerSlide(targetPage, 'page-slide-right');
                 } else {
-                    targetPage.classList.add('page-slide-left');
+                    targetPlayerSlide(targetPage, 'page-slide-left');
                 }
                 
-                // Scroll ke bagian atas buku agar nyaman dibaca di mobile
                 window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+
+            function targetPlayerSlide(el, className) {
+                el.classList.add(className);
             }
 
             // 6. Form Appointment Handler
