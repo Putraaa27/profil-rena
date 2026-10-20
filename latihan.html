@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile - Rena Ismi</title>
+
+    <!-- Menghubungkan ke Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- CSS Custom -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70" tabindex="0">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top shadow-sm custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-pink-dark" href="#home">🎀 Rena's Space</a>
+            <button class="navbar-toggler border-pink" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fw-medium">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#favorites">Favorites</a></li>
+                </ul>
+                <button class="btn btn-pink rounded-pill ms-lg-3 px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#appointmentModal">
+                    <i class="bi bi-calendar-heart"></i> Meet Me
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================= HERO LANDING PAGE ================= -->
+    <section id="home" class="hero-section d-flex align-items-center position-relative overflow-hidden">
+        <!-- Elemen background interaktif melayang -->
+        <div class="floating-blob blob-1"></div>
+        <div class="floating-blob blob-2"></div>
+        
+        <div class="container text-center position-relative z-1">
+            <!-- Avatar (Ganti src dengan foto asli nanti) -->
+            <div class="avatar-container mb-4 mx-auto shadow-lg">
+                <span class="avatar-emoji">🌸</span>
+            </div>
+            
+            <h1 class="display-3 fw-bold text-pink-dark mb-2 reveal-up">Rena Ismi</h1>
+            
+            <div class="typing-wrapper mb-4 reveal-up" style="animation-delay: 0.2s;">
+                <h2 class="h4 text-pink-medium typing-text">Data Science Student & Dreamer ✨</h2>
+            </div>
+            
+            <p class="lead text-secondary mb-5 mx-auto reveal-up" style="max-width: 600px; animation-delay: 0.4s;">
+                Welcome to my personal digital space. I'm passionate about data, journaling, continuous learning, and lifting heavy things.
+            </p>
+            
+            <div class="d-flex justify-content-center gap-3 reveal-up" style="animation-delay: 0.6s;">
+                <a href="#about" class="btn btn-pink rounded-pill px-5 py-3 shadow-sm fw-bold hover-lift">
+                    Explore Profile <i class="bi bi-arrow-down ms-1"></i>
+                </a>
+                <a href="https://www.instagram.com/rnsmi_/" target="_blank" class="btn btn-outline-pink rounded-circle shadow-sm icon-btn">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@reredsjourney" target="_blank" class="btn btn-outline-pink rounded-circle shadow-sm icon-btn">
+                    <i class="bi bi-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <div class="container pb-5">
+        
+        <!-- ABOUT SECTION -->
+        <section id="about" class="pt-5 mt-4 section-offset">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4">
+                            <h3 class="card-title text-pink-dark fw-bold mb-4">🌷 Data Diri</h3>
+                            <ul class="list-unstyled mb-0 custom-list">
+                                <li><strong>Nama Lengkap:</strong> Rena Ismi</li>
+                                <li><strong>NIM:</strong> 184250026</li>
+                                <li><strong>Program Studi:</strong> Sains Data</li>
+                                <li><strong>Cita-cita:</strong> Punya BMW, Rumah Setdut Bandung.</li>
+                                <li><strong>Target Hidup:</strong> Bisa menjadi <i>Qan'ah with my qawwam man.</i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BANK ACCOUNT (Interactive Toggle) -->
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4 d-flex flex-column justify-content-center align-items-center text-center">
+                            <h3 class="card-title text-pink-dark fw-bold mb-3">💌 Information Account</h3>
+                            <p class="text-secondary small mb-4">Informasi rekening ditampilkan secara terbatas untuk privasi.</p>
+                            
+                            <button class="btn btn-outline-pink rounded-pill px-4" type="button" data-bs-toggle="collapse" data-bs-target="#bankList">
+                                <i class="bi bi-lock-fill me-2"></i> Tampilkan Rekening
+                            </button>
+                            
+                            <div class="collapse w-100 mt-3" id="bankList">
+                                <div class="card card-body border-pink text-start bg-white rounded-3 shadow-sm">
+                                    <ul class="mb-0 custom-list small">
+                                        <li>Bank BNI : ********4358</li>
+                                        <li>Bank Jago : ********0930</li>
+                                        <li>GoPay : ********4329</li>
+                                        <li>ShopeePay : ********1470</li>
+                                        <li>BTN : ********6933</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIVITIES SECTION -->
+        <section id="activities" class="pt-5 mt-4 section-offset">
+            <h2 class="text-center text-pink-dark fw-bold mb-4">Daily Life & Hobbies</h2>
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4">
+                            <h3 class="card-title text-pink-dark h4 mb-3">🌸 My Hobby</h3>
+                            <div class="hobby-tags">
+                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">📖 Journaling</span>
+                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">📚 Reading Books</span>
+                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">🏋️‍♀️ Weight Lifting</span>
+                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">🧠 Psychology</span>
+                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">👨‍👩‍👧 Parenting & Fiqh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-7">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4">
+                            <h3 class="card-title text-pink-dark h4 mb-3">🌼 My Kesibukan</h3>
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover text-center align-middle mb-0">
+                                    <thead class="border-bottom border-pink text-pink-dark">
+                                        <tr>
+                                            <th>Kegiatan</th>
+                                            <th>Jadwal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-secondary">
+                                        <tr><td class="fw-medium">Coolyeah</td><td>Menyesuaikan</td></tr>
+                                        <tr><td class="fw-medium">Gym</td><td>Menyesuaikan</td></tr>
+                                        <tr><td class="fw-medium">EPLC Speaking 1</td><td>Weekday 7.00 PM</td></tr>
+                                        <tr><td class="fw-medium">Himpunan</td><td>Menyesuaikan</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAVORITES SECTION -->
+        <section id="favorites" class="pt-5 mt-4 section-offset mb-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4 text-center">
+                            <div class="display-4 mb-3">🎧</div>
+                            <h3 class="card-title text-pink-dark h5 fw-bold">Favorite Songs</h3>
+                            <div class="d-flex flex-column gap-2 mt-3">
+                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Gym</a>
+                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Belajar</a>
+                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Beberes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4 text-center">
+                            <div class="display-4 mb-3">✈️</div>
+                            <h3 class="card-title text-pink-dark h5 fw-bold">Travel List</h3>
+                            <ul class="list-unstyled text-secondary mt-3">
+                                <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>USA - 50 States</li>
+                                <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>Prancis</li>
+                                <li><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>Maldives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
+                        <div class="card-body bg-pink-soft p-4 text-center">
+                            <div class="display-4 mb-3">🌺</div>
+                            <h3 class="card-title text-pink-dark h5 fw-bold">Favorite Flowers</h3>
+                            <ul class="list-unstyled text-secondary mt-3">
+                                <li class="mb-2">Lily</li>
+                                <li class="mb-2">Lotus</li>
+                                <li class="mb-2">Rose</li>
+                                <li>Sunflower</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-pink-soft py-4 text-center">
+        <div class="container">
+            <h5 class="fw-bold text-pink-dark mb-1">Rena Ismi ♡</h5>
+            <p class="text-secondary small mb-3">Keep learning, keep growing, and keep dreaming.</p>
+            <a href="mailto:renaismi163@gmail.com" class="text-pink-medium text-decoration-none">renaismi163@gmail.com</a>
+        </div>
+    </footer>
+
+    <!-- MODAL POP-UP APPOINTMENT -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 shadow-lg">
+                <div class="modal-header bg-pink text-white rounded-top-4 border-0">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-cup-hot me-2"></i> Let's Meet Up!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-pink-soft">
+                    <p class="text-secondary mb-4">Wanna eat out, hangout, or study date?</p>
+                    <form id="appointment-form">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-pink-dark small">Nama Kamu</label>
+                            <input type="text" class="form-control rounded-3 border-pink" id="nama" placeholder="Masukkan nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-pink-dark small">Tujuan</label>
+                            <select class="form-select rounded-3 border-pink" required>
+                                <option value="" disabled selected>Pilih jenis appointment...</option>
+                                <option value="Eat Out">Eat Out</option>
+                                <option value="Hangout">Hangout</option>
+                                <option value="Study Date">Study Date</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-pink-dark small">Tanggal</label>
+                            <input type="date" class="form-control rounded-3 border-pink" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-pink-dark small">Pesan Tambahan</label>
+                            <textarea class="form-control rounded-3 border-pink" rows="2" placeholder="Hi Rena, aku mau ngajak..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-pink w-100 rounded-pill fw-bold py-2 shadow-sm">Kirim Undangan ♡</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- SCRIPT INTERAKTIF -->
+    <script>
+        // Form Submit Handler
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const namaInput = document.getElementById('nama').value;
+            
+            // Ubah isi modal menjadi pesan sukses
+            const modalBody = document.querySelector('#appointmentModal .modal-body');
+            modalBody.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="display-1 mb-3">✨</div>
+                    <h4 class="fw-bold text-pink-dark">Yeay, Terkirim!</h4>
+                    <p class="text-secondary">Halo <b>${namaInput}</b>, terima kasih sudah mengajak Rena ketemuan. Ditunggu balasannya ya!</p>
+                    <button type="button" class="btn btn-pink rounded-pill px-4 mt-3" data-bs-dismiss="modal">Sip, Ditunggu!</button>
+                </div>
+            `;
+        });
+
+        // Efek transparan pada Navbar saat di-scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
