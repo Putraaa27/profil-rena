@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Profile - Rena Ismi</title>
 
-    <!-- Menghubungkan ke Bootstrap 5 CSS -->
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -15,101 +15,87 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70" tabindex="0">
+<body class="journal-theme">
 
-    <!-- ================= NAVBAR ================= -->
-    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top shadow-sm custom-navbar">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-pink-dark" href="#home">🎀 Rena's Space</a>
-            <button class="navbar-toggler border-pink" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+    <!-- ================= BACKGROUND AUDIO (The 1975 - About You) ================= -->
+    <!-- Menggunakan Audio HTML5 agar bisa mengalir terus antar halaman -->
+    <audio id="bg-audio" loop>
+        <!-- Link audio instrumental/lofi "About You" atau audio publik -->
+        <source src="https://cdns.jurispons.com/uploads/music/The%201975%20-%20About%20You%20(Instrumental).mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung elemen audio.
+    </audio>
+
+    <!-- ================= KONTROL MUSIK & NAVIGASI ATAS ================= -->
+    <div id="top-controls" class="fixed-top p-3 d-flex justify-content-between align-items-center px-4 d-none">
+        <span class="badge bg-white text-pink-dark shadow-sm px-3 py-2 rounded-pill fw-bold">
+            <i class="bi bi-music-note-beamed animate-bounce me-1"></i> The 1975 - About You
+        </span>
+        <button id="audio-toggle-btn" class="btn btn-light rounded-circle shadow-sm text-pink-dark" title="Matikan/Hidupkan Musik">
+            <i class="bi bi-volume-up-fill fs-5" id="audio-icon"></i>
+        </button>
+    </div>
+
+
+    <!-- ================= INTRO / LOCK SCREEN ================= -->
+    <div id="intro-screen" class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center text-center position-relative overflow-hidden">
+        <div id="flower-container"></div>
+        
+        <div class="intro-card-box p-5 rounded-4 shadow-lg bg-white-glass position-relative z-2">
+            <div class="display-4 mb-3">📖✨</div>
+            <h1 class="fw-bold text-pink-dark mb-3">Rena's Journal</h1>
+            <p class="text-secondary mb-4">"Keep learning, keep growing, and keep dreaming."</p>
+            
+            <!-- Loading Bar -->
+            <div class="loading-box mb-4 mx-auto">
+                <div class="loading-bar" id="intro-loading-bar"></div>
+            </div>
+            <p id="loading-text" class="small text-pink-medium fw-bold mb-3">Membuka lembaran buku...</p>
+
+            <!-- Tombol Masuk (Terkunci sampai loading selesai) -->
+            <button id="btn-masuk" class="btn btn-pink rounded-pill px-5 py-3 fw-bold shadow-sm d-none animate-pop">
+                Buka Buku Journal ♡ <i class="bi bi-book-half ms-2"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto fw-medium">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#favorites">Favorites</a></li>
-                </ul>
-                <button class="btn btn-pink rounded-pill ms-lg-3 px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#appointmentModal">
-                    <i class="bi bi-calendar-heart"></i> Meet Me
-                </button>
-            </div>
         </div>
-    </nav>
-
-    <!-- ================= HERO LANDING PAGE ================= -->
-    <section id="home" class="hero-section d-flex align-items-center position-relative overflow-hidden">
-        <!-- Elemen background interaktif melayang -->
-        <div class="floating-blob blob-1"></div>
-        <div class="floating-blob blob-2"></div>
-        
-        <div class="container text-center position-relative z-1">
-            <!-- Avatar (Ganti src dengan foto asli nanti) -->
-            <div class="avatar-container mb-4 mx-auto shadow-lg">
-                <span class="avatar-emoji">🌸</span>
-            </div>
-            
-            <h1 class="display-3 fw-bold text-pink-dark mb-2 reveal-up">Rena Ismi</h1>
-            
-            <div class="typing-wrapper mb-4 reveal-up" style="animation-delay: 0.2s;">
-                <h2 class="h4 text-pink-medium typing-text">Data Science Student & Dreamer ✨</h2>
-            </div>
-            
-            <p class="lead text-secondary mb-5 mx-auto reveal-up" style="max-width: 600px; animation-delay: 0.4s;">
-                Welcome to my personal digital space. I'm passionate about data, journaling, continuous learning, and lifting heavy things.
-            </p>
-            
-            <div class="d-flex justify-content-center gap-3 reveal-up" style="animation-delay: 0.6s;">
-                <a href="#about" class="btn btn-pink rounded-pill px-5 py-3 shadow-sm fw-bold hover-lift">
-                    Explore Profile <i class="bi bi-arrow-down ms-1"></i>
-                </a>
-                <a href="https://www.instagram.com/rnsmi_/" target="_blank" class="btn btn-outline-pink rounded-circle shadow-sm icon-btn">
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@reredsjourney" target="_blank" class="btn btn-outline-pink rounded-circle shadow-sm icon-btn">
-                    <i class="bi bi-tiktok"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+    </div>
 
 
-    <!-- ================= MAIN CONTENT ================= -->
-    <div class="container pb-5">
-        
-        <!-- ABOUT SECTION -->
-        <section id="about" class="pt-5 mt-4 section-offset">
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4">
-                            <h3 class="card-title text-pink-dark fw-bold mb-4">🌷 Data Diri</h3>
-                            <ul class="list-unstyled mb-0 custom-list">
-                                <li><strong>Nama Lengkap:</strong> Rena Ismi</li>
-                                <li><strong>NIM:</strong> 184250026</li>
-                                <li><strong>Program Studi:</strong> Sains Data</li>
-                                <li><strong>Cita-cita:</strong> Punya BMW, Rumah Setdut Bandung.</li>
-                                <li><strong>Target Hidup:</strong> Bisa menjadi <i>Qan'ah with my qawwam man.</i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <!-- ================= MAIN HOMEPAGE (BUKU / MULTI-CHAPTER) ================= -->
+    <div id="main-content" class="container py-5 d-none">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 
-                <!-- BANK ACCOUNT (Interactive Toggle) -->
-                <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4 d-flex flex-column justify-content-center align-items-center text-center">
-                            <h3 class="card-title text-pink-dark fw-bold mb-3">💌 Information Account</h3>
-                            <p class="text-secondary small mb-4">Informasi rekening ditampilkan secara terbatas untuk privasi.</p>
-                            
-                            <button class="btn btn-outline-pink rounded-pill px-4" type="button" data-bs-toggle="collapse" data-bs-target="#bankList">
-                                <i class="bi bi-lock-fill me-2"></i> Tampilkan Rekening
-                            </button>
-                            
-                            <div class="collapse w-100 mt-3" id="bankList">
-                                <div class="card card-body border-pink text-start bg-white rounded-3 shadow-sm">
-                                    <ul class="mb-0 custom-list small">
+                <!-- BUKU / WADAH UTAMA HALAMAN -->
+                <div class="book-container shadow-lg rounded-4 bg-white position-relative overflow-hidden">
+                    
+                    <!-- KONTEN HALAMAN 1: DATA DIRI & ABOUT -->
+                    <div class="book-page active-page" id="page-1">
+                        <div class="page-header text-center pb-3 border-bottom border-pink mb-4">
+                            <span class="badge bg-pink-soft text-pink-dark rounded-pill px-3 py-1">Bab 1 / 4</span>
+                            <h2 class="fw-bold text-pink-dark mt-2">🌷 Data Diri & Impian</h2>
+                        </div>
+                        <div class="page-body px-2">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-md-4 text-center mb-3 mb-md-0">
+                                    <div class="profile-avatar-box shadow-sm mx-auto">
+                                        <span>🌸</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="mb-2"><b>Nama:</b> Rena Ismi</p>
+                                    <p class="mb-2"><b>NIM:</b> 184250026</p>
+                                    <p class="mb-2"><b>Program Studi:</b> Sains Data</p>
+                                    <p class="mb-2"><b>Cita-cita:</b> Punya BMW, Rumah Setdut Bandung.</p>
+                                    <p class="mb-0"><b>Target Hidup:</b> Bisa menjadi <i>Qan'ah with my qawwam man.</i></p>
+                                </div>
+                            </div>
+                            <!-- Rekening Interaktif -->
+                            <div class="p-3 rounded-3 bg-pink-soft border border-pink text-center mt-3">
+                                <p class="small text-secondary mb-2">🔒 Informasi rekening ditampilkan secara terbatas.</p>
+                                <button class="btn btn-outline-pink btn-sm rounded-pill px-3" type="button" data-bs-toggle="collapse" data-bs-target="#bankList">
+                                    Tampilkan Rekening
+                                </button>
+                                <div class="collapse mt-2 text-start" id="bankList">
+                                    <ul class="small mb-0 text-secondary">
                                         <li>Bank BNI : ********4358</li>
                                         <li>Bank Jago : ********0930</li>
                                         <li>GoPay : ********4329</li>
@@ -119,149 +105,170 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ACTIVITIES SECTION -->
-        <section id="activities" class="pt-5 mt-4 section-offset">
-            <h2 class="text-center text-pink-dark fw-bold mb-4">Daily Life & Hobbies</h2>
-            <div class="row g-4">
-                <div class="col-md-5">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4">
-                            <h3 class="card-title text-pink-dark h4 mb-3">🌸 My Hobby</h3>
-                            <div class="hobby-tags">
-                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">📖 Journaling</span>
-                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">📚 Reading Books</span>
-                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">🏋️‍♀️ Weight Lifting</span>
-                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">🧠 Psychology</span>
-                                <span class="badge bg-pink text-white p-2 px-3 m-1 rounded-pill">👨‍👩‍👧 Parenting & Fiqh</span>
-                            </div>
+                        <div class="page-footer d-flex justify-content-between align-items-center mt-5 pt-3 border-top">
+                            <span class="text-muted small">Hal. 1</span>
+                            <button class="btn btn-pink rounded-pill px-4 btn-next" data-next="2">
+                                Lanjut <i class="bi bi-arrow-right ms-1"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-                
-                <div class="col-md-7">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4">
-                            <h3 class="card-title text-pink-dark h4 mb-3">🌼 My Kesibukan</h3>
+
+                    <!-- KONTEN HALAMAN 2: HOBBY & KESIBUKAN -->
+                    <div class="book-page" id="page-2">
+                        <div class="page-header text-center pb-3 border-bottom border-pink mb-4">
+                            <span class="badge bg-pink-soft text-pink-dark rounded-pill px-3 py-1">Bab 2 / 4</span>
+                            <h2 class="fw-bold text-pink-dark mt-2">🌸 Hobi & Kesibukan</h2>
+                        </div>
+                        <div class="page-body px-2">
+                            <h5 class="text-pink-dark fw-bold mb-3"><i class="bi bi-heart-fill me-2"></i>My Hobby</h5>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="badge bg-pink text-white p-2 px-3 rounded-pill">Journaling</span>
+                                <span class="badge bg-pink text-white p-2 px-3 rounded-pill">Reading Books</span>
+                                <span class="badge bg-pink text-white p-2 px-3 rounded-pill">Parenting & Fiqh Nikah</span>
+                                <span class="badge bg-pink text-white p-2 px-3 rounded-pill">Psychology</span>
+                                <span class="badge bg-pink text-white p-2 px-3 rounded-pill">Weight Lifting</span>
+                            </div>
+
+                            <h5 class="text-pink-dark fw-bold mb-3"><i class="bi bi-calendar-check-fill me-2"></i>Jadwal Kegiatan</h5>
                             <div class="table-responsive">
-                                <table class="table table-borderless table-hover text-center align-middle mb-0">
-                                    <thead class="border-bottom border-pink text-pink-dark">
-                                        <tr>
-                                            <th>Kegiatan</th>
-                                            <th>Jadwal</th>
-                                        </tr>
+                                <table class="table table-bordered table-hover text-center align-middle small mb-0">
+                                    <thead class="table-pink text-pink-dark">
+                                        <tr><th>No</th><th>Kegiatan</th><th>Jadwal</th></tr>
                                     </thead>
-                                    <tbody class="text-secondary">
-                                        <tr><td class="fw-medium">Coolyeah</td><td>Menyesuaikan</td></tr>
-                                        <tr><td class="fw-medium">Gym</td><td>Menyesuaikan</td></tr>
-                                        <tr><td class="fw-medium">EPLC Speaking 1</td><td>Weekday 7.00 PM</td></tr>
-                                        <tr><td class="fw-medium">Himpunan</td><td>Menyesuaikan</td></tr>
+                                    <tbody>
+                                        <tr><td>1</td><td>Coolyeah</td><td>Menyesuaikan</td></tr>
+                                        <tr><td>2</td><td>Gym</td><td>Menyesuaikan</td></tr>
+                                        <tr><td>3</td><td>EPLC Speaking 1</td><td>Weekday 7.00 PM</td></tr>
+                                        <tr><td>4</td><td>Himpunan</td><td>Menyesuaikan</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <div class="page-footer d-flex justify-content-between align-items-center mt-5 pt-3 border-top">
+                            <button class="btn btn-outline-secondary rounded-pill px-4 btn-prev" data-prev="1">
+                                <i class="bi bi-arrow-left me-1"></i> Kembali
+                            </button>
+                            <span class="text-muted small">Hal. 2</span>
+                            <button class="btn btn-pink rounded-pill px-4 btn-next" data-next="3">
+                                Lanjut <i class="bi bi-arrow-right ms-1"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- FAVORITES SECTION -->
-        <section id="favorites" class="pt-5 mt-4 section-offset mb-5">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4 text-center">
-                            <div class="display-4 mb-3">🎧</div>
-                            <h3 class="card-title text-pink-dark h5 fw-bold">Favorite Songs</h3>
-                            <div class="d-flex flex-column gap-2 mt-3">
-                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Gym</a>
-                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Belajar</a>
-                                <a href="#" class="btn btn-light border-pink text-pink-dark rounded-pill hover-lift">Playlist Beberes</a>
+                    <!-- KONTEN HALAMAN 3: FAVORITE & TRAVEL -->
+                    <div class="book-page" id="page-3">
+                        <div class="page-header text-center pb-3 border-bottom border-pink mb-4">
+                            <span class="badge bg-pink-soft text-pink-dark rounded-pill px-3 py-1">Bab 3 / 4</span>
+                            <h2 class="fw-bold text-pink-dark mt-2">✈️ Favorit & Travel</h2>
+                        </div>
+                        <div class="page-body px-2">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink">
+                                        <h6 class="fw-bold text-pink-dark mb-2">🎧 Favorite Songs</h6>
+                                        <ul class="small ps-3 mb-0 text-secondary">
+                                            <li>Playlist Gym</li>
+                                            <li>Playlist Belajar</li>
+                                            <li>Playlist Beberes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-pink-soft rounded-3 h-100 border border-pink">
+                                        <h6 class="fw-bold text-pink-dark mb-2">🌺 Favorite Flowers</h6>
+                                        <ul class="small ps-3 mb-0 text-secondary">
+                                            <li>Lily, Lotus, Rose, Sunflower</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <div class="p-3 bg-pink-soft rounded-3 border border-pink">
+                                        <h6 class="fw-bold text-pink-dark mb-2">✈️ My Travel List</h6>
+                                        <ol class="small ps-3 mb-0 text-secondary">
+                                            <li>USA - 50 States</li>
+                                            <li>Prancis</li>
+                                            <li>Maldives</li>
+                                        </ol>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4 text-center">
-                            <div class="display-4 mb-3">✈️</div>
-                            <h3 class="card-title text-pink-dark h5 fw-bold">Travel List</h3>
-                            <ul class="list-unstyled text-secondary mt-3">
-                                <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>USA - 50 States</li>
-                                <li class="mb-2"><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>Prancis</li>
-                                <li><i class="bi bi-geo-alt-fill text-pink-medium me-2"></i>Maldives</li>
-                            </ul>
+                        <div class="page-footer d-flex justify-content-between align-items-center mt-5 pt-3 border-top">
+                            <button class="btn btn-outline-secondary rounded-pill px-4 btn-prev" data-prev="2">
+                                <i class="bi bi-arrow-left me-1"></i> Kembali
+                            </button>
+                            <span class="text-muted small">Hal. 3</span>
+                            <button class="btn btn-pink rounded-pill px-4 btn-next" data-next="4">
+                                Lanjut <i class="bi bi-arrow-right ms-1"></i>
+                            </button>
                         </div>
                     </div>
+
+                    <!-- KONTEN HALAMAN 4: APPOINTMENT & SOCIAL MEDIA -->
+                    <div class="book-page" id="page-4">
+                        <div class="page-header text-center pb-3 border-bottom border-pink mb-4">
+                            <span class="badge bg-pink-soft text-pink-dark rounded-pill px-3 py-1">Bab 4 / 4</span>
+                            <h2 class="fw-bold text-pink-dark mt-2">☕ Appointment & Connect</h2>
+                        </div>
+                        <div class="page-body px-2">
+                            <!-- Form Appointment -->
+                            <form id="appointment-form" class="mb-4">
+                                <div class="mb-2">
+                                    <label class="form-label small fw-bold text-pink-dark">Nama Kamu:</label>
+                                    <input type="text" class="form-control form-control-sm border-pink" id="nama" placeholder="Masukkan nama" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label small fw-bold text-pink-dark">Jenis Appointment:</label>
+                                    <select class="form-select form-select-sm border-pink" id="jenis-app" required>
+                                        <option value="" disabled selected>Pilih...</option>
+                                        <option value="Eat Out">Eat Out</option>
+                                        <option value="Hangout">Hangout</option>
+                                        <option value="Study Date">Study Date</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold text-pink-dark">Tanggal:</label>
+                                    <input type="date" class="form-control form-control-sm border-pink" id="tanggal" required>
+                                </div>
+                                <button type="submit" class="btn btn-pink btn-sm w-100 rounded-pill fw-bold shadow-sm">Kirim Undangan ♡</button>
+                            </form>
+
+                            <!-- Social Media Links -->
+                            <div class="text-center pt-2 border-top border-pink">
+                                <p class="small fw-bold text-pink-dark mb-2">🎀 Find me on:</p>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <a href="https://www.tiktok.com/@reredsjourney" target="_blank" class="btn btn-outline-pink btn-sm rounded-circle"><i class="bi bi-tiktok"></i></a>
+                                    <a href="https://www.instagram.com/rnsmi_/" target="_blank" class="btn btn-outline-pink btn-sm rounded-circle"><i class="bi bi-instagram"></i></a>
+                                    <a href="mailto:renaismi163@gmail.com" class="btn btn-outline-pink btn-sm rounded-circle"><i class="bi bi-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-footer d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                            <button class="btn btn-outline-secondary rounded-pill px-4 btn-prev" data-prev="3">
+                                <i class="bi bi-arrow-left me-1"></i> Kembali
+                            </button>
+                            <span class="text-muted small">Hal. 4 (Akhir)</span>
+                            <button class="btn btn-outline-pink rounded-pill px-3 small" onclick="location.reload()">
+                                <i class="bi bi-arrow-counterclockwise me-1"></i> Ulangi Intro
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm interactive-card rounded-4">
-                        <div class="card-body bg-pink-soft p-4 text-center">
-                            <div class="display-4 mb-3">🌺</div>
-                            <h3 class="card-title text-pink-dark h5 fw-bold">Favorite Flowers</h3>
-                            <ul class="list-unstyled text-secondary mt-3">
-                                <li class="mb-2">Lily</li>
-                                <li class="mb-2">Lotus</li>
-                                <li class="mb-2">Rose</li>
-                                <li>Sunflower</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </section>
-
+        </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-pink-soft py-4 text-center">
-        <div class="container">
-            <h5 class="fw-bold text-pink-dark mb-1">Rena Ismi ♡</h5>
-            <p class="text-secondary small mb-3">Keep learning, keep growing, and keep dreaming.</p>
-            <a href="mailto:renaismi163@gmail.com" class="text-pink-medium text-decoration-none">renaismi163@gmail.com</a>
-        </div>
-    </footer>
-
-    <!-- MODAL POP-UP APPOINTMENT -->
-    <div class="modal fade" id="appointmentModal" tabindex="-1" aria-hidden="true">
+    <!-- MODAL SUKSES APPOINTMENT -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 rounded-4 shadow-lg">
-                <div class="modal-header bg-pink text-white rounded-top-4 border-0">
-                    <h5 class="modal-title fw-bold"><i class="bi bi-cup-hot me-2"></i> Let's Meet Up!</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4 bg-pink-soft">
-                    <p class="text-secondary mb-4">Wanna eat out, hangout, or study date?</p>
-                    <form id="appointment-form">
-                        <div class="mb-3">
-                            <label class="form-label fw-bold text-pink-dark small">Nama Kamu</label>
-                            <input type="text" class="form-control rounded-3 border-pink" id="nama" placeholder="Masukkan nama" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold text-pink-dark small">Tujuan</label>
-                            <select class="form-select rounded-3 border-pink" required>
-                                <option value="" disabled selected>Pilih jenis appointment...</option>
-                                <option value="Eat Out">Eat Out</option>
-                                <option value="Hangout">Hangout</option>
-                                <option value="Study Date">Study Date</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold text-pink-dark small">Tanggal</label>
-                            <input type="date" class="form-control rounded-3 border-pink" required>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label fw-bold text-pink-dark small">Pesan Tambahan</label>
-                            <textarea class="form-control rounded-3 border-pink" rows="2" placeholder="Hi Rena, aku mau ngajak..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-pink w-100 rounded-pill fw-bold py-2 shadow-sm">Kirim Undangan ♡</button>
-                    </form>
+            <div class="modal-content border-0 rounded-4 bg-white shadow-lg">
+                <div class="modal-body text-center p-4">
+                    <div class="display-1 mb-2">✨</div>
+                    <h4 class="fw-bold text-pink-dark">Yeay, Terkirim!</h4>
+                    <p class="text-secondary small">Halo <b id="namaPemesan"></b>, terima kasih sudah mengajak Rena ketemuan. Ditunggu balasannya ya!</p>
+                    <button type="button" class="btn btn-pink rounded-pill px-4 mt-2" data-bs-dismiss="modal">Sip, Ditunggu!</button>
                 </div>
             </div>
         </div>
@@ -269,34 +276,125 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- SCRIPT INTERAKTIF -->
-    <script>
-        // Form Submit Handler
-        document.getElementById('appointment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const namaInput = document.getElementById('nama').value;
-            
-            // Ubah isi modal menjadi pesan sukses
-            const modalBody = document.querySelector('#appointmentModal .modal-body');
-            modalBody.innerHTML = `
-                <div class="text-center py-4">
-                    <div class="display-1 mb-3">✨</div>
-                    <h4 class="fw-bold text-pink-dark">Yeay, Terkirim!</h4>
-                    <p class="text-secondary">Halo <b>${namaInput}</b>, terima kasih sudah mengajak Rena ketemuan. Ditunggu balasannya ya!</p>
-                    <button type="button" class="btn btn-pink rounded-pill px-4 mt-3" data-bs-dismiss="modal">Sip, Ditunggu!</button>
-                </div>
-            `;
-        });
 
-        // Efek transparan pada Navbar saat di-scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+    <!-- SCRIPT INTERAKTIF & MUSIK -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById('bg-audio');
+            const audioToggleBtn = document.getElementById('audio-toggle-btn');
+            const audioIcon = document.getElementById('audio-icon');
+            const topControls = document.getElementById('top-controls');
+            const introScreen = document.getElementById('intro-screen');
+            const mainContent = document.getElementById('main-content');
+            const btnMasuk = document.getElementById('btn-masuk');
+            const loadingBar = document.getElementById('intro-loading-bar');
+            const loadingText = document.getElementById('loading-text');
+
+            let isMusicPlaying = true; // Musik aktif secara default
+
+            // 1. Animasi Bunga Jatuh di Intro
+            const flowerContainer = document.getElementById('flower-container');
+            const emojis = ['🌸', '🌺', '🌷', '✨', '🌼'];
+            for (let i = 0; i < 20; i++) {
+                let f = document.createElement('div');
+                f.className = 'falling-flower';
+                f.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                f.style.left = Math.random() * 100 + 'vw';
+                f.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                f.style.animationDelay = Math.random() * 2 + 's';
+                flowerContainer.appendChild(f);
             }
+
+            // 2. Simulasi Loading Intro (Terkunci sampai selesai)
+            let progress = 0;
+            let loadInterval = setInterval(() => {
+                progress += 2;
+                loadingBar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(loadInterval);
+                    loadingText.innerText = "Buku Journal siap dibuka! ♡";
+                    loadingBar.classList.add('bg-success');
+                    btnMasuk.classList.remove('d-none'); // Munculkan tombol next
+                }
+            }, 50);
+
+            // 3. Tombol Masuk Ditekan (Memulai Musik & Masuk ke Buku)
+            btnMasuk.addEventListener('click', function() {
+                // Coba putar audio (mengatasi kebijakan autoplay browser)
+                if (isMusicPlaying) {
+                    audio.play().catch(e => console.log("Autoplay dicegah browser:", e));
+                }
+                
+                topControls.classList.remove('d-none'); // Munculkan kontrol musik di pojok kanan atas
+                
+                // Transisi fade-out intro screen
+                introScreen.style.opacity = '0';
+                setTimeout(() => {
+                    introScreen.style.display = 'none';
+                    mainContent.classList.remove('d-none');
+                }, 500);
+            });
+
+            // 4. Kontrol Tombol Mute / Unmute Musik (Persisten antar halaman)
+            audioToggleBtn.addEventListener('click', function() {
+                if (isMusicPlaying) {
+                    audio.pause();
+                    isMusicPlaying = false;
+                    audioIcon.className = "bi bi-volume-mute-fill text-muted fs-5";
+                    audioToggleBtn.title = "Musik Dimatikan";
+                } else {
+                    audio.play();
+                    isMusicPlaying = true;
+                    audioIcon.className = "bi bi-volume-up-fill fs-5 text-pink-dark";
+                    audioToggleBtn.title = "Musik Dihidupkan";
+                }
+            });
+
+            // 5. Efek Membalik Halaman Buku (Page Flip Animation)
+            const pages = document.querySelectorAll('.book-page');
+            
+            document.querySelectorAll('.btn-next').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    let targetPageNum = this.getAttribute('data-next');
+                    switchPage(targetPageNum, 'next');
+                });
+            });
+
+            document.querySelectorAll('.btn-prev').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    let targetPageNum = this.getAttribute('data-prev');
+                    switchPage(targetPageNum, 'prev');
+                });
+            });
+
+            function switchPage(pageNum, direction) {
+                pages.forEach(p => {
+                    p.classList.remove('active-page', 'page-slide-left', 'page-slide-right');
+                });
+
+                let targetPage = document.getElementById('page-' + pageNum);
+                targetPage.classList.add('active-page');
+                
+                // Beri efek animasi geser/balik kertas
+                if(direction === 'next') {
+                    targetPage.classList.add('page-slide-right');
+                } else {
+                    targetPage.classList.add('page-slide-left');
+                }
+                
+                // Scroll ke bagian atas buku agar nyaman dibaca di mobile
+                window.scrollTo({ top: 120, behavior: 'smooth' });
+            }
+
+            // 6. Form Appointment Handler
+            document.getElementById('appointment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nama = document.getElementById('nama').value;
+                document.getElementById('namaPemesan').innerText = nama;
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+                this.reset();
+            });
         });
     </script>
 </body>

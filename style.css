@@ -1,134 +1,152 @@
-/* ==================== BASE & TYPOGRAPHY ==================== */
-html {
-    scroll-behavior: smooth; /* Bikin klik menu navbar meluncur mulus */
-}
-
-body {
-    background-color: #fafafa;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+/* ==================== TEMA DASAR BUKU / JOURNAL ==================== */
+body.journal-theme {
+    background-color: #f7ebee;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #4a3038;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* ==================== COLOR PALETTE ==================== */
-.text-pink-dark { color: #c45a7b; }
-.text-pink-medium { color: #d97999; }
+/* Warna Kustom Pink */
+.text-pink-dark { color: #c45a7b !important; }
+.text-pink-medium { color: #d97999 !important; }
 .bg-pink { background-color: #d97999 !important; }
 .bg-pink-soft { background-color: #ffeaf2 !important; }
 .border-pink { border-color: #f0bfd0 !important; }
 
-/* ==================== NAVBAR ==================== */
-.custom-navbar {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); /* Efek kaca kekinian */
-    transition: all 0.3s ease;
+/* ==================== INTRO / LOCK SCREEN ==================== */
+#intro-screen {
+    background: linear-gradient(135deg, #ffeaf2 0%, #ffd6e5 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    transition: opacity 0.6s ease;
 }
 
-.custom-navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+.bg-white-glass {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 2px solid #e8a8bd;
+    max-width: 450px;
+    width: 90%;
 }
 
-.nav-link {
-    color: #4a3038;
-    transition: color 0.3s;
+/* Loading Bar */
+.loading-box {
+    width: 100%;
+    height: 10px;
+    background-color: #f0bfd0;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: #c45a7b !important;
-    font-weight: bold;
+.loading-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #c45a7b;
+    border-radius: 10px;
+    transition: width 0.1s linear;
 }
 
-/* ==================== HERO SECTION (LANDING) ==================== */
-.hero-section {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #fff5f8 0%, #ffffff 100%);
-    padding-top: 80px; /* Jarak untuk navbar */
+/* Animasi Tombol Muncul */
+.animate-pop {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.avatar-container {
-    width: 150px;
-    height: 150px;
-    background: #d97999;
-    border: 5px solid white;
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Bunga Jatuh */
+#flower-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.falling-flower {
+    position: absolute;
+    top: -50px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+
+/* ==================== BUKU / PAGE FLIP SYSTEM ==================== */
+#main-content {
+    padding-top: 50px;
+}
+
+.book-container {
+    background: #fff;
+    border: 3px solid #e8a8bd;
+    border-radius: 20px;
+    padding: 35px;
+    min-height: 520px;
+    box-shadow: 0 15px 35px rgba(196, 90, 123, 0.15) !important;
+}
+
+/* Sistem Halaman Buku */
+.book-page {
+    display: none;
+    opacity: 0;
+}
+
+.book-page.active-page {
+    display: block;
+}
+
+/* Efek Animasi Membalik Kertas */
+.page-slide-right {
+    animation: slideRight 0.5s ease forwards;
+}
+
+.page-slide-left {
+    animation: slideLeft 0.5s ease forwards;
+}
+
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Avatar Profil di Buku */
+.profile-avatar-box {
+    width: 110px;
+    height: 110px;
+    background-color: #ffd6e5;
+    border: 4px solid #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
-/* Typing Effect */
-.typing-wrapper {
-    display: inline-block;
-}
-
-.typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    margin: 0 auto;
-    border-right: 3px solid #c45a7b;
-    animation: typing 3s steps(40, end) infinite alternate, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    0% { width: 0; }
-    50%, 100% { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #c45a7b; }
-}
-
-/* Floating Elements Background */
-.floating-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-    opacity: 0.5;
-    animation: float 10s infinite ease-in-out alternate;
-}
-
-.blob-1 {
-    width: 300px;
-    height: 300px;
-    background: #ffd6e5;
-    top: 10%;
-    left: -50px;
-}
-
-.blob-2 {
-    width: 400px;
-    height: 400px;
-    background: #f0bfd0;
-    bottom: -100px;
-    right: -100px;
-    animation-delay: 2s;
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, 50px) scale(1.1); }
-}
-
-/* Entrance Animations */
-.reveal-up {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
-    from { opacity: 0; transform: translateY(30px); }
-}
-
-/* ==================== BUTTONS & CARDS ==================== */
+/* Tombol Buku */
 .btn-pink {
     background-color: #d97999;
     color: white;
     border: none;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .btn-pink:hover {
@@ -141,7 +159,7 @@ body {
     color: #c45a7b;
     border: 2px solid #c45a7b;
     background: transparent;
-    transition: all 0.3s;
+    transition: 0.3s;
 }
 
 .btn-outline-pink:hover {
@@ -149,48 +167,16 @@ body {
     color: white;
 }
 
-.icon-btn {
-    width: 50px;
-    height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+/* Kontrol Musik Pojok Kanan Atas */
+#top-controls {
+    z-index: 1050;
 }
 
-.hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.animate-bounce {
+    animation: bounce 1.5s infinite;
 }
 
-.hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(217, 121, 153, 0.3) !important;
-}
-
-.interactive-card {
-    transition: all 0.3s ease;
-}
-
-.interactive-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.05) !important;
-}
-
-/* ==================== UTILITIES ==================== */
-.section-offset {
-    scroll-margin-top: 80px; /* Mencegah judul tertutup navbar saat discroll */
-}
-
-.custom-list li {
-    margin-bottom: 0.8rem;
-    color: #6c757d;
-}
-
-.custom-list strong {
-    color: #4a3038;
-}
-
-.form-control:focus, .form-select:focus {
-    border-color: #d97999;
-    box-shadow: 0 0 0 0.25rem rgba(217, 121, 153, 0.25);
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
 }
